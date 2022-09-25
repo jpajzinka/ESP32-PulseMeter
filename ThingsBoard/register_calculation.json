@@ -1,0 +1,121 @@
+{
+  "ruleChain": {
+    "additionalInfo": {
+      "description": ""
+    },
+    "name": "Register calculation",
+    "type": "CORE",
+    "firstRuleNodeId": null,
+    "root": false,
+    "debugMode": true,
+    "configuration": null,
+    "externalId": null
+  },
+  "metadata": {
+    "firstNodeIndex": 4,
+    "nodes": [
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 1009,
+          "layoutY": 415
+        },
+        "type": "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode",
+        "name": "save register",
+        "debugMode": false,
+        "configuration": {
+          "defaultTTL": 0,
+          "skipLatestPersistence": false,
+          "useServerTs": false
+        },
+        "externalId": null
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 442,
+          "layoutY": 414
+        },
+        "type": "org.thingsboard.rule.engine.transform.TbTransformMsgNode",
+        "name": "Cumlative",
+        "debugMode": false,
+        "configuration": {
+          "jsScript": "var newMsg = {};\n   \nnewMsg.Cumulative = msg.LP15 + parseFloat(metadata.Cumulative)\n     \nreturn {msg: newMsg, metadata: metadata, msgType: msgType};\n"
+        },
+        "externalId": null
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 459,
+          "layoutY": 138
+        },
+        "type": "org.thingsboard.rule.engine.action.TbLogNode",
+        "name": "Errro",
+        "debugMode": false,
+        "configuration": {
+          "jsScript": "return '\\nNo cumm. value calculated\\nmessage: ' + JSON.stringify(msg) + '\\nmetadata: ' + JSON.stringify(metadata);"
+        },
+        "externalId": null
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 734,
+          "layoutY": 414
+        },
+        "type": "org.thingsboard.rule.engine.action.TbLogNode",
+        "name": "Success",
+        "debugMode": false,
+        "configuration": {
+          "jsScript": "return '\\nCalculate cumulative value: \\nmessage:' + JSON.stringify(msg) + '\\nmetadata:' + JSON.stringify(metadata);"
+        },
+        "externalId": null
+      },
+      {
+        "additionalInfo": {
+          "description": "",
+          "layoutX": 225,
+          "layoutY": 255
+        },
+        "type": "org.thingsboard.rule.engine.metadata.TbGetAttributesNode",
+        "name": "Attr",
+        "debugMode": false,
+        "configuration": {
+          "tellFailureIfAbsent": true,
+          "clientAttributeNames": [],
+          "sharedAttributeNames": [],
+          "serverAttributeNames": [],
+          "latestTsKeyNames": [
+            "Cumulative"
+          ],
+          "getLatestValueWithTs": false
+        },
+        "externalId": null
+      }
+    ],
+    "connections": [
+      {
+        "fromIndex": 1,
+        "toIndex": 3,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 3,
+        "toIndex": 0,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 4,
+        "toIndex": 1,
+        "type": "Success"
+      },
+      {
+        "fromIndex": 4,
+        "toIndex": 2,
+        "type": "Failure"
+      }
+    ],
+    "ruleChainConnections": null
+  }
+}
