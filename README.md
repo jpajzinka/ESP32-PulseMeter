@@ -1,6 +1,8 @@
 # ESP32-PulseMeter
 This repository contains quick and dirty Micropython ESP32 Pulse Sensor implementation which can be used to colect you water and gas meter pulses and calulate 15 minutes consumption. The usage of ULP makes this code usable for battery only solutions.
 
+Futher details are documented on WIKI page https://github.com/jpajzinka/ESP32-PulseMeter/wiki.
+
 # ULP ussage
 
 To implement a pulse sensor in micropython is fairly simple - however the trick is to make a batery effective solution, where in my case the ULP code is the key. The ULP code as such is inspired by code found on this forum https://esp32.com/viewtopic.php?t=13638 
