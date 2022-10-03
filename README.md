@@ -14,7 +14,7 @@ The code, client() method is prepared for integration with ThingsBoard (https://
 # Configuration
 
 To succesfully integrate then solution with ThingsBoard server you need to configure reed_setting.py file, especially all following fields:
-
+```
 device_id = "thingsboard device acces token"
 LPlen = 15 #telemetry frequency in minutes</br>
 channel = "LP15" # ThingsBoad telemetry name</br>
@@ -24,6 +24,6 @@ wifiSSID = "your wifi name"</br>
 wifiPWD = "wifi password"</br>
 server="your thingsboard server IP"</br>
 port="your thingsboad server port"</br>
-
+```
 
 
