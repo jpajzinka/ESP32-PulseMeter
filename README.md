@@ -25,3 +25,7 @@ wifiPWD = "wifi password"
 server="your thingsboard server IP"
 port="your thingsboad server port"
 ```
+
+Sample Fritizing
+
+![Lolin 32](https://github.com/jpajzinka/ESP32-PulseMeter/blob/main/images/fritzing_img.png)
