@@ -3,7 +3,7 @@ This repository contains quick and dirty Micropython ESP32 Pulse Sensor implemen
 
 Futher details are documented on WIKI page https://github.com/jpajzinka/ESP32-PulseMeter/wiki.
 
-# ULP ussage
+# ULP integration in Micropython
 
 To implement a pulse sensor in micropython is fairly simple - however the trick is to make a batery effective solution, where in my case the ULP code is the key. The ULP code as such is inspired by code found on this forum https://esp32.com/viewtopic.php?t=13638 
 
