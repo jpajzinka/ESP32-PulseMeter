@@ -16,14 +16,12 @@ The code, client() method is prepared for integration with ThingsBoard (https://
 To succesfully integrate then solution with ThingsBoard server you need to configure reed_setting.py file, especially all following fields:
 ```
 device_id = "thingsboard device acces token"
-LPlen = 15 #telemetry frequency in minutes</br>
-channel = "LP15" # ThingsBoad telemetry name</br>
-temp_sensor = "None" #type of temp sensor if attached to esp32</br>
-tempPin = 12 #temp sensor pin</br>
-wifiSSID = "your wifi name"</br>
-wifiPWD = "wifi password"</br>
-server="your thingsboard server IP"</br>
-port="your thingsboad server port"</br>
+LPlen = 15 #telemetry frequency in minutes
+channel = "LP15" # ThingsBoad telemetry name
+temp_sensor = "None" #type of temp sensor if attached to esp32
+tempPin = 12 #temp sensor pin
+wifiSSID = "your wifi name"
+wifiPWD = "wifi password"
+server="your thingsboard server IP"
+port="your thingsboad server port"
 ```
-
-
