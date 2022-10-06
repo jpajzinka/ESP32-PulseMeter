@@ -11,4 +11,4 @@ wifiSSID = "your wifi name"
 wifiPWD = "wifi password"
 server="your thingsboard server IP"
 port="your thingsboad server port"
-bat_measure = True
+bat_measure = False # battery status (experimental) can be checked via pin 34 see the code for details
