@@ -130,6 +130,7 @@ def log(msg="None", level=1):
 
 def value(start=0):
     """
+    Function to read variable from ULP memory
     """
     val = (int(hex(mem32[ULP_MEM_BASE + start*4] & ULP_DATA_MASK),16))
     log("Reading value: " + str(val))
@@ -144,6 +145,9 @@ def init_ulp():
     log("ULP Started")
 
 def setval(start=1, value=0x0):
+    """
+    Function to set variable in ULP memory
+    """  
     mem32[ULP_MEM_BASE + start*4] = value
 
 def getTemp():
@@ -178,12 +182,11 @@ def getTemp():
         if t > setting.threshold:
             log("Temperature too high {} - return".format(t),3)
             return
- 
-        data["Temperature"] = {"now":"{:3.1f}".format(t) }
+        data["Temperature"] = "{:3.1f}".format(t)
     
     elif setting.temp_sensor == "dummy":
-        data["Temperature"] = {"now":"{:3.1f}".format(33.3) }
-        data["Humidity"] = {"now":"{:3.1f}".format(33.3) }
+        data["Temperature"] = "{:3.1f}".format(33.3)
+        data["Humidity"] = "{:3.1f}".format(33.3)
     return data
     
 def setupWifi():
