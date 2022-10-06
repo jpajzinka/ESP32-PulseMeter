@@ -1,5 +1,5 @@
 device_id = "thingsboard device acces token"
-LPlen = 15 #telemetry frequency in minutes
+LPlen = 15 #duration of telemetry interval in minutes
 channel = "LP15" # telemetry name
 temp_sensor = "None" #type of temp sensor if attached to esp32
 #temp_sensor = "DHT22"
