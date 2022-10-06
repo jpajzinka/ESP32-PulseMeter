@@ -28,4 +28,4 @@ port="your thingsboad server port"
 
 # Scheme
 
-![Lolin 32](https://github.com/jpajzinka/ESP32-PulseMeter/blob/main/images/fritzing_img.png | width=600)
+![Lolin 32](https://github.com/jpajzinka/ESP32-PulseMeter/blob/main/images/fritzing_img.png)
