@@ -11,3 +11,4 @@ wifiSSID = "your wifi name"
 wifiPWD = "wifi password"
 server="your thingsboard server IP"
 port="your thingsboad server port"
+bat_measure = True

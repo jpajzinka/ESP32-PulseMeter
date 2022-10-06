@@ -6,7 +6,7 @@ import uio, ure, utime, urequests
 import network, socket
 import sys
 from esp32 import ULP
-from machine import Pin, mem32
+from machine import Pin, mem32, ADC
 from esp32_ulp import src_to_binary
 import json
 
@@ -214,6 +214,10 @@ def parseTime( response):
 
 def client():
     message = {}
+    if setting.bat_measure:
+        p = ADC(Pin(34))
+        p.atten(ADC.ATTN_11DB)
+        message["Voltage"] = "{:3.1f}".format(p.read()*1.7)
     log("Client start", 3)
     pulses = value(1)
     message[setting.channel] = pulses/2/100
