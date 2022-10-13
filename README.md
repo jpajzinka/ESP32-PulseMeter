@@ -1,5 +1,5 @@
 # ESP32-PulseMeter
-This repository contains quick and dirty Micropython ESP32 Pulse Sensor implementation which can be used to colect you water and gas meter pulses and calulate 15 minutes consumption. The usage of ULP makes this code usable for battery only solutions. The ULP code counts pulses on **RTC_GPIO10** (io_number variable in ULP code) pin - check your ESP chip's datasheet to locate it properly.
+This repository contains quick and dirty Micropython ESP32 Pulse Sensor implementation, which can be used to colect your water and gas meter pulses and calulate 15 minutes consumption. The usage of ULP makes this code usable for battery only solutions. The ULP code counts pulses on **RTC_GPIO10** (io_number variable in ULP code) pin - check your ESP chip's datasheet to locate it properly.
 
 Futher details are documented on WIKI page https://github.com/jpajzinka/ESP32-PulseMeter/wiki.
 
@@ -9,7 +9,7 @@ To implement a pulse sensor in micropython is fairly simple - however the trick 
 
 To succesfully run this code you will nedd to download esp32_ulp library from https://github.com/micropython/micropython-esp32-ulp 
 
-The code, client() method is prepared for integration with ThingsBoard (https://thingsboard.io/)
+The code, is designed for integration with ThingsBoard (https://thingsboard.io/), you can modify the code() function to integrate with alternative servers.
 
 # Configuration
 
