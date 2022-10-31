@@ -11,6 +11,7 @@ from esp32_ulp import src_to_binary
 import json
 
 #the ulp source code is ULP pulse counter working on pin 0, improved copy of code from here https://esp32.com/viewtopic.php?t=13638
+voltage1 = ""
 source = """\
 #define DR_REG_RTCIO_BASE            0x3ff48400
 #define RTC_IO_TOUCH_PAD0_REG        (DR_REG_RTCIO_BASE + 0x94)
@@ -218,12 +219,10 @@ def parseTime( response):
 def client():
     message = {}
     if setting.bat_measure:
-        p = ADC(Pin(34))
-        p.atten(ADC.ATTN_11DB)
-        message["Voltage"] = "{:3.1f}".format(p.read()*1.7)
+        message["Voltage"] = voltage1
     log("Client start", 3)
     pulses = value(1)
-    message[setting.channel] = pulses/2/100
+    message[setting.channel] = pulses/2*setting.multiplier
     setval(1,0x0)
 
     temp = getTemp()
@@ -237,6 +236,8 @@ def client():
     
     try:
         s = socket.socket()
+        #15 seconds timeout
+        s.settimeout(15.0)
         s.connect((setting.server, setting.port))
         post = 'POST /api/v1/'+setting.device_id+'/telemetry  HTTP/1.1\r\nHost: '+setting.server+':'+str(setting.port)+'\r\nUser-Agent: ESP32\r\nAccept:*/*\r\nConnection: close\r\nContent-Type: application/json\r\nContent-Length: '+str(len(str(js)))+'\r\n\r\n'+str(js)+'\r\n\r\n'
         log(post)
@@ -265,6 +266,10 @@ def client():
 
 try:
     # The code logic itself
+    if setting.bat_measure:
+        p = ADC(Pin(34))
+        p.atten(ADC.ATTN_11DB)
+        voltage1 = "{:3.1f}".format(p.read()*1.7)
     log(machine.reset_cause(),3)
     #Init UlP
     if machine.reset_cause()==machine.PWRON_RESET or machine.reset_cause()==machine.HARD_RESET or machine.reset_cause()==machine.SOFT_RESET: 
