@@ -111,6 +111,8 @@ def blink(value=1):
     3 blinks - data sent to server
     It can be eliminated to save batery live
     """
+    if setting.log_level==0:
+        return
     for i in range(0, value):
         led.value(0)
         time.sleep(0.3)

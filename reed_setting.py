@@ -13,3 +13,4 @@ server="your thingsboard server IP"
 port="your thingsboad server port"
 bat_measure = False # battery status (experimental) can be checked via pin 34 see the code for details
 multiplier = 0.01
+log_level = 1 # value 0 disables led blinking - saves bettery
